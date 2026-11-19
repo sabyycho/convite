@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sabrina 18 · 東京 3:00 AM</title>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07040f; --bg2:#14082a; --pink:#ff2d95; --cyan:#22e8ff; --yellow:#ffe14a; --text:#f4eaff; --paper:#f3efe4; --ink:#1b1b22;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#07040f;--text:#f4eaff}}
+:root[data-theme="dark"]{--bg:#07040f;--text:#f4eaff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:'DotGothic16','Share Tech Mono',monospace;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+body::after{content:"";position:fixed;inset:0;z-index:49;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.7))}
+.city{position:fixed;inset:0;z-index:0;
+  background:
+   linear-gradient(180deg,transparent 55%,rgba(255,45,149,.25) 100%),
+   linear-gradient(90deg,#0b0620 0 8%,#120a2e 8% 15%,#0b0620 15% 24%,#1a0e3a 24% 30%,#0b0620 30% 41%,#120a2e 41% 52%,#1a0e3a 52% 58%,#0b0620 58% 70%,#120a2e 70% 79%,#0b0620 79% 90%,#1a0e3a 90%) bottom/100% 45% no-repeat,
+   radial-gradient(circle at 50% 0%,var(--bg2),var(--bg) 70%)}
+.neon{position:fixed;z-index:1;writing-mode:vertical-rl;font-size:clamp(22px,5vw,38px);letter-spacing:.2em;opacity:.8;pointer-events:none}
+.n1{left:3%;top:12%;color:var(--pink);text-shadow:0 0 6px var(--pink),0 0 22px var(--pink);animation:fl 4s infinite}
+.n2{right:3%;top:20%;color:var(--cyan);text-shadow:0 0 6px var(--cyan),0 0 22px var(--cyan);animation:fl 5.5s infinite .8s}
+@keyframes fl{0%,92%,100%{opacity:.85}93%{opacity:.2}95%{opacity:.9}97%{opacity:.3}}
+.screen{position:relative;z-index:5;min-height:100vh;display:none;flex-direction:column;align-items:center;justify-content:center;padding:28px 56px;text-align:center}
+.screen.on{display:flex;animation:in .7s ease}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.clock{font-family:'Share Tech Mono',monospace;color:var(--cyan);text-shadow:0 0 10px var(--cyan);letter-spacing:.3em;font-size:14px;margin-bottom:18px}
+h1,h2{margin:0;font-weight:400}
+.glow{color:var(--pink);text-shadow:0 0 8px var(--pink),0 0 28px var(--pink),0 0 60px #a0125f}
+.big{font-size:clamp(40px,13vw,84px);line-height:1}
+.sub{color:var(--cyan);text-shadow:0 0 8px var(--cyan);letter-spacing:.25em;font-size:13px;margin:14px 0 26px}
+input{font:inherit;font-size:20px;text-align:center;width:min(100%,320px);padding:14px;background:rgba(10,4,30,.8);color:var(--text);border:2px solid var(--cyan);box-shadow:0 0 14px var(--cyan),inset 0 0 12px rgba(34,232,255,.2);outline:none;border-radius:2px}
+input::placeholder{color:#7c6fa0}
+.btn{margin-top:22px;font:inherit;font-size:18px;letter-spacing:.15em;padding:14px 30px;background:transparent;color:var(--pink);border:2px solid var(--pink);box-shadow:0 0 14px var(--pink),inset 0 0 14px rgba(255,45,149,.3);text-shadow:0 0 8px var(--pink);cursor:pointer;text-decoration:none;display:inline-block;border-radius:2px}
+.btn:active{background:var(--pink);color:#000}
+.btn.c{color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 14px var(--cyan),inset 0 0 14px rgba(34,232,255,.3);text-shadow:0 0 8px var(--cyan)}
+.card{border:1px solid rgba(34,232,255,.5);background:rgba(10,4,30,.72);padding:18px 20px;margin:10px 0;width:min(100%,380px);box-shadow:0 0 18px rgba(34,232,255,.2)}
+.card b{display:block;color:var(--yellow);font-weight:400;font-size:12px;letter-spacing:.3em;margin-bottom:6px}
+.card span{font-size:20px}
+.small{font-size:13px;color:#b9a9dd;margin-top:6px;line-height:1.5}
+/* ticket */
+.ticket{position:relative;width:min(100%,330px);background:var(--paper);color:var(--ink);font-family:'Share Tech Mono','DotGothic16',monospace;padding:18px 18px 22px;text-align:left;transform:rotate(-1.5deg);box-shadow:0 10px 40px rgba(0,0,0,.7),0 0 30px rgba(255,45,149,.35);
+  -webkit-mask:radial-gradient(circle 9px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 9px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.th{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:3px solid var(--ink);padding-bottom:8px}
+.th .jp{font-family:'DotGothic16',sans-serif;font-size:34px;line-height:1}
+.th .en{font-size:12px;text-align:right;letter-spacing:.1em}
+.row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed #888;padding:7px 0;font-size:14px}
+.row i{font-style:normal;opacity:.65;font-size:11px}
+.guest{margin:12px 0 6px;padding:8px;border:2px solid var(--ink);text-align:center}
+.guest i{display:block;font-style:normal;font-size:10px;opacity:.7;letter-spacing:.2em}
+.guest strong{display:block;font-family:'DotGothic16',sans-serif;font-weight:400;font-size:24px;word-break:break-word;margin-top:2px}
+.stamp{position:absolute;right:12px;top:78px;border:3px solid #d3202f;color:#d3202f;font-family:'DotGothic16',sans-serif;font-size:20px;padding:2px 8px;transform:rotate(12deg);opacity:.85}
+.bar{height:46px;margin:12px 0 4px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 9px,var(--ink) 9px 12px,transparent 12px 14px)}
+.fine{font-size:10px;text-align:center;letter-spacing:.15em}
+.ask{max-width:340px;margin-top:20px;font-size:17px;line-height:1.6}
+.ask em{font-style:normal;color:var(--yellow);text-shadow:0 0 8px var(--yellow)}
+</style>
+</head>
+<body>
+<div class="city"></div>
+<div class="neon n1">誕生日前夜</div>
+<div class="neon n2">深夜三時</div>
+
+<section class="screen on" id="gate">
+  <div class="clock">03:00 AM · 東京</div>
+  <h1 class="glow big">入口</h1>
+  <div class="sub">QUEM É VOCÊ?</div>
+  <input id="nome" maxlength="24" placeholder="digite seu nome" autocomplete="off">
+  <button class="btn" id="entrar">ENTRAR ▶</button>
+</section>
+
+<section class="screen" id="invite">
+  <div class="clock">03:00 AM · 東京</div>
+  <div class="sub" style="margin:0 0 6px">オッス, <span id="n1"></span>!</div>
+  <h1 class="glow big">SABRINA<br>18</h1>
+  <div class="sub">あなたは招待されました · VOCÊ FOI CONVIDADO(A)</div>
+  <div class="card"><b>日時 · HORÁRIO</b><span>Abertura dos portões<br>às 22h00 em ponto</span></div>
+  <div class="card"><b>場所 · LOCAL</b><span>Residência de Campo<br>Campinas · São Paulo</span>
+    <div class="small">Uma noite reservada, longe de olhares. 🤫 O endereço exato segue por mensagem privada.</div></div>
+  <button class="btn" id="conf">CONFIRMAR PRESENÇA</button>
+</section>
+
+<section class="screen" id="tk">
+  <div class="clock">駐車場 · 03:00 AM</div>
+  <div class="ticket">
+    <div class="th"><div class="jp">駐車券</div><div class="en">PARKING TICKET<br>No. 000018</div></div>
+    <div class="stamp">入庫済</div>
+    <div class="row"><i>駐車場 / LOCAL</i><span>RESIDÊNCIA DE CAMPO</span></div>
+    <div class="row"><i>入庫日 / DATA</i><span id="dt"></span></div>
+    <div class="row"><i>入庫時刻 / ENTRADA</i><span>22:00 H</span></div>
+    <div class="row"><i>区画 / VAGA</i><span>B-18</span></div>
+    <div class="guest"><i>ご利用者 / CONVIDADO(A)</i><strong id="n2t"></strong></div>
+    <div class="row"><i>料金 / VALOR</i><span>¥0 · GRÁTIS</span></div>
+    <div class="bar"></div>
+    <div class="fine">紛失しないでください · NÃO PERCA ESTE TICKET</div>
+  </div>
+  <div class="ask">Presença confirmada! 🎉<br>Agora <em>tire um print</em> desse ticket e me envie a foto, <span id="n3"></span>. Ele é a sua entrada na festa.</div>
+  <div class="small" style="margin-top:18px">ENVIE POR AQUI ↓</div>
+  <a class="btn c" id="zap" href="#" style="margin-top:10px">WHATSAPP ▶</a>
+  <a class="btn" id="ig" href="https://instagram.com/sabnght" target="_blank" rel="noopener" style="margin-top:12px">INSTAGRAM @sabnght ▶</a>
+</section>
+
+<script>
+// ✏️ EDITE AQUI
+var WHATSAPP = "5519994141125";
+var DATA_FESTA = "A DEFINIR"; // ex: "12/12/2026"
+
+function $(i){return document.getElementById(i)}
+function show(id){
+  var s=document.querySelectorAll('.screen');
+  for(var i=0;i<s.length;i++)s[i].classList.remove('on');
+  $(id).classList.add('on'); window.scrollTo(0,0);
+}
+var nome="";
+function entrar(){
+  var v=$('nome').value.trim();
+  if(!v){$('nome').style.borderColor='var(--pink)';$('nome').focus();return}
+  nome=v;
+  $('n1').textContent=nome;
+  show('invite');
+}
+$('entrar').onclick=entrar;
+$('nome').onkeydown=function(e){if(e.key==='Enter')entrar()};
+$('conf').onclick=function(){
+  $('n2t').textContent=nome.toUpperCase();
+  $('n3').textContent=nome;
+  $('dt').textContent=DATA_FESTA;
+  var msg="Oi Sabrina! Aqui está meu ticket, "+nome+" confirmado(a) 🎫";
+  $('zap').href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
+  $('zap').target="_blank";
+  show('tk');
+};
+</script>
+</body>
+</html>
